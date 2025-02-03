@@ -14,7 +14,6 @@ client = OpenAI(
     base_url="YOUR_BASE_URL",
 )
 
-
 # 定义一个简单的聊天机器人类
 class ChatBot:
     def __init__(self, client):
@@ -22,20 +21,19 @@ class ChatBot:
 
     async def get_response(self, text):
         try:
-            chat_completion = self.client.chat.completions.create(
+            chat_completion = await client.chat.completions.create(
                 messages=[
                     {
                         "role": "user",
                         "content": text,
                     }
                 ],
-                model="MODAL_NAME", # 例如deepseek-ai/DeepSeek-V3 请参考api网站命名 这里是手动切换
+                model="deepseek-ai/DeepSeek-V3",
             )
             return chat_completion.choices[0].message.content
         except Exception as e:
             logger.error(f"Error in chat completion: {e}")
             return None
-
 
 # 初始化 chat_bot
 chat_bot = ChatBot(client)
@@ -58,8 +56,6 @@ async def chat_command(Message, text):
 - '.聊天 今天天气怎么样？'
         """
         await API.send_msg(Message, help_text)
-    elif not text.strip():  # 检查 text 是否为空或仅包含空格
-        await API.send_msg(Message, f"{prefix}请输入您想说的话。")
     else:
         # 使用 chat_bot 进行处理
         response = await chat_bot.get_response(text)
@@ -67,6 +63,26 @@ async def chat_command(Message, text):
             await API.send_msg(Message, f"{prefix}{response}")  # 添加前缀
         else:
             await API.send_msg(Message, f"{prefix}An error occurred.")  # 添加前缀
+
+
+async def user_move_room(Message):
+    pass
+
+
+async def user_join_room(Message):
+    await API.like(Message.user_id)
+
+
+async def user_leave_room(Message):
+    pass
+
+
+async def revoke_message(Message):
+    pass
+
+
+async def room_message(Message):
+    pass
 
 
 async def on_init():
