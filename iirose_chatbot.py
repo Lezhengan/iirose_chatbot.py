@@ -29,7 +29,7 @@ class ChatBot:
                         "content": text,
                     }
                 ],
-                model="deepseek-ai/DeepSeek-V3",
+                model="MODAL_NAME", # 例如deepseek-ai/DeepSeek-V3 请参考api网站命名 这里是手动切换
             )
             return chat_completion.choices[0].message.content
         except Exception as e:
