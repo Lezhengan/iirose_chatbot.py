@@ -1,7 +1,6 @@
 # iirose_chatbot.py
 蔷薇花园的一个基于小草机器人的openai适配器（支持第三方）
 
-```markdown
 # iirose Chatbot Plugin
 
 这是一个基于 iirose 平台的聊天机器人插件，它使用 支持 OpenAI 的输入输出格式的模型进行对话。
