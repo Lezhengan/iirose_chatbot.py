@@ -14,7 +14,7 @@
 
 ## 安装
 
-1.  将插件文件（如 `plugin.py`）放入 iirose 平台的插件目录。
+1.  将插件文件（如 `iirose_chatbot.py`）放入 iirose 平台的插件目录。
 2.  在 iirose 平台中启用该插件。
 3.  配置 OpenAI API 密钥和基础 URL。你需要在插件代码中替换以下内容：
 
